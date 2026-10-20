@@ -19,6 +19,21 @@ build.bat
 run.bat
 ```
 
+On Linux, install MinGW-w64, GCC, QEMU for x86-64, and OVMF firmware. The
+kernel can use the native x86-64 GCC; an `x86_64-elf` cross-compiler can also
+be selected with `KERNEL_CC`. Then run:
+
+```sh
+./build.sh
+./run.sh
+```
+
+The Linux scripts accept the same `EFI_CC`, `KERNEL_CC`, `QEMU_EXE`,
+`OVMF_CODE`, and `OVMF_VARS` environment-variable overrides as the Windows
+scripts. `run.sh` automatically selects GTK or SDL when available; set
+`QEMU_DISPLAY` to choose a specific QEMU display backend. The script searches
+common Linux OVMF locations automatically.
+
 The scripts accept `EFI_CC`, `KERNEL_CC`, `QEMU_EXE`, `OVMF_CODE`, and
 `OVMF_VARS` environment-variable overrides. The build places the EFI loader at
 `build\esp\EFI\BOOT\BOOTX64.EFI` and the kernel at `build\esp\KERNEL.ELF`.
